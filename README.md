@@ -13,22 +13,25 @@ drawn in code (Pillow); there are no photographs.
 ## The news in the image
 
 **Lead story — War in Ukraine.** Ukraine's military said it struck the
-Savasleyka airbase in Russia's Nizhny Novgorod region, damaging five
-aircraft used to launch missiles and bombs. Russia hit back at Ukraine's
-energy grid, killing at least five people and cutting power in five
-regions. The war also spread wider: Kyiv said it had sunk a Russian ship
-off Libya, far from the front lines. *(Al Jazeera, 26 Nov 2026)*
+Savasleyka airbase in Russia's Nizhny Novgorod region on 24–25 November,
+damaging five aircraft — three MiG-31s and two Su-34s — used to launch
+missiles and bombs; the extent of the damage is still being assessed.
+Russia hit Ukraine's energy grid in overnight strikes, killing at least
+five people and cutting power in five regions. The war also spread wider:
+Kyiv said it had sunk the Russian corvette Merkury off Libya, far from
+the front lines. *(Reuters, 25–26 Nov 2026)*
 
 **The other stories:**
 
 - **Disaster — Egypt.** A fuel tanker crash sparked a major fire on a
-  highway near Cairo, killing at least 30 people.
-- **Trade — USA / India.** The US said it will cap tariffs on Indian goods
-  at 17% if a trade deal is reached — or raise them to 25% if talks fail.
-  *(Reuters, 25–26 Nov 2026)*
+  highway near Cairo, killing at least 31 people and injuring 21.
+  *(Associated Press, 25–26 Nov 2026)*
+- **Trade — USA / India.** The US proposed capping tariffs on Indian goods
+  at 17% if a trade deal is reached — or raising them to 25% if talks fail.
+  The rates are a USTR proposal, not final. *(Reuters, 25 Nov 2026)*
 - **Energy — Gulf.** Yemen's Houthis said they hit Saudi Arabia's largest
-  refinery, Ras Tanura; Brent crude rose above $94 a barrel on supply
-  fears. *(Reuters, 26 Nov 2026)*
+  refinery, Ras Tanura; Riyadh said it shot down four drones. Brent crude
+  rose above $94 a barrel on supply fears. *(Reuters, 25–26 Nov 2026)*
 - **Space — China / Pakistan.** Wing Commander Muhammad Zeeshan Ali became
   the first foreigner aboard China's Tiangong space station after the
   Shenzhou-24 crew docked. *(Dawn, 25 Nov 2026)*
@@ -36,14 +39,15 @@ off Libya, far from the front lines. *(Al Jazeera, 26 Nov 2026)*
   treaty ruling out any foreign military base in the Pacific nation, a deal
   widely seen as a counter to China's ambitions. *(The Straits Times, 25 Nov 2026)*
 - **Asia — Korea.** North Korea ordered Switzerland to close its newly
-  opened diplomatic office in Pyongyang.
+  opened diplomatic office in Pyongyang and its envoy out within 48 hours,
+  in a row over sanctions on a youth camp. *(Yonhap, 25 Nov 2026)*
 
 **Also today:** six dead, two of them children, after a plane crashed off
 the Mississippi coast (BBC); South Africa's President Ramaphosa wins a
-reprieve from the "Farmgate" impeachment inquiry; Gukesh draws Game 2 with
-white against Sindarov at the World Chess Championship.
+reprieve from the "Farmgate" impeachment inquiry; Gukesh draws Game 2 in
+20 moves with white against Sindarov at the World Chess Championship.
 
-Sources: Al Jazeera, Reuters, BBC, Associated Press, Dawn, The Straits Times.
+Sources: Al Jazeera, Reuters, BBC, Associated Press, Dawn, The Straits Times, Yonhap.
 
 ## How it works
 
@@ -54,8 +58,9 @@ Sources: Al Jazeera, Reuters, BBC, Associated Press, Dawn, The Straits Times.
 - `main.ts` — copies the validated `entry.png` to `/output/entry.png`.
   Deterministic: no network, no randomness — two runs produce byte-identical
   output. Before copying, it validates the PNG (signature, IHDR, full chunk
-  chain through IEND, 1024×1024, ≤ 1 MiB) and fails with a clear error if
-  the image is damaged.
+  chain through IEND, 8-bit RGB, non-interlaced, at least one IDAT chunk,
+  IDAT data inflates to exactly the bytes of a 1024×1024 RGB image,
+  1024×1024, ≤ 1 MiB) and fails with a clear error if the image is damaged.
 
 ## Run it
 
